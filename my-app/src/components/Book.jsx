@@ -2,7 +2,6 @@ import React from 'react';
 import {Button, Card} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
-
 const Book = ({
     id,
     bookname,
@@ -13,22 +12,14 @@ const Book = ({
 }) =>{
     const navigator = useNavigate();
     return(
-        
-        <Card style={{width: '18rem'}} className="book">
-            <Card.Body>
-                <Card.Title className="book-title">{bookname} </Card.Title>
-                <div className="book-details">
-                    <div>Author: {author}</div>
-                    <div>Year: {year}</div>
-                    <div>Pages: {pages}</div>
-                </div>
-                <Button variant="primary" onClick={() => navigator(`/edit/${id}`)}>Edit</Button>{' '}
-                <Button variant="danger" onClick={() => handleRemoveBook(id)}>
-                    Delete
-                </Button>
-            </Card.Body>
-        </Card>
-
+        <tr className="book">
+                <td className="book-title">{bookname} </td>
+                <td>{author}</td>
+                <td>{year}</td>
+                <td>{pages}</td>
+                <td><Button variant="primary" onClick={() => navigator(`/edit/${id}`)}>Edit</Button>{' '}</td>
+                <td><Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button></td>
+        </tr>
     )
 }
 

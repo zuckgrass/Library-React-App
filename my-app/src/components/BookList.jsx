@@ -7,18 +7,27 @@ const BookList = ({ books, setBooks}) =>{
 		setBooks(books.filter((book) => book.id !== id));
 	};
     return(
-        <React.Fragment>
-			<div className="book-list">
-				{!_.isEmpty(books) ? (
-					books.map((book) =>(
-						<Book key={book.id} {...book} handleRemoveBook={handleRemoveBook} />
-					))
-				) : (
-					<p className ="message">No books available.</p>
-				)}
-			</div>
-		</React.Fragment>
-    )
+		<table className="table table-bordered">
+		<thead>
+		  <tr>
+			<th>Name</th>
+			<th>Author</th>
+			<th>Year</th>
+			<th>Pages</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{!_.isEmpty(books) ? (
+			books.map((book) =>(
+			<Book key={book.id} {...book} handleRemoveBook={handleRemoveBook} />
+			))
+			) : (
+			<p className ="message">No books available.</p>
+			)}
+		</tbody>
+		</table>
+		
+	)
 }
-
+	
 export default BookList;
