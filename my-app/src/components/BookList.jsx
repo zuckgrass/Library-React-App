@@ -22,7 +22,7 @@ const BookList = ({ books, setBooks}) =>{
 			<Book key={book.id} {...book} handleRemoveBook={handleRemoveBook} />
 			))
 			) : (
-			<p className ="message">No books available.</p>
+				<tr><td colSpan="4" className="message">No books available</td> </tr>
 			)}
 		</tbody>
 		</table>

@@ -10,7 +10,7 @@ const EditBook =({ books, setBooks}) =>{
 
     const handleOnSubmit = (book) =>{
         const filteredBooks = books.filter((book) => book.id !== id);
-        setBooks([book, ...filteredBooks]);
+        setBooks([...filteredBooks, book ]);
         navigator('/');
     }
 
