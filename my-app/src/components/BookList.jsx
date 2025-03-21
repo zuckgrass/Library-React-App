@@ -4,8 +4,16 @@ import Book from './Book';
 
 const BookList = ({ books, setBooks}) =>{
 	const handleRemoveBook = (id) => {
-		setBooks(books.filter((book) => book.id !== id));
+		fetch(`http://localhost:3001/books/${id}`, {
+			method: "DELETE",
+		})
+		.then((response) => response.json())
+		.then((data) => {
+			setBooks(books.filter((book) => book._id !== id));
+		})
+		.catch((error) => console.error("Error deleting book:", error));
 	};
+	
     return(
 		<table className="table table-bordered">
 		<thead>
@@ -19,10 +27,10 @@ const BookList = ({ books, setBooks}) =>{
 		<tbody>
 			{!_.isEmpty(books) ? (
 			books.map((book) =>(
-			<Book key={book.id} {...book} handleRemoveBook={handleRemoveBook} />
+			<Book key={book._id} {...book} handleRemoveBook={handleRemoveBook} />
 			))
 			) : (
-				<tr><td colSpan="4" className="message">No books available</td> </tr>
+				<tr><td colSpan="4" className="message">No books available</td></tr>
 			)}
 		</tbody>
 		</table>

@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
 const Book = ({
-    id,
+    _id,
     bookname,
     author,
     year,
@@ -17,8 +17,8 @@ const Book = ({
                 <td>{author}</td>
                 <td>{year}</td>
                 <td>{pages}</td>
-                <td><Button variant="primary" onClick={() => navigator(`/edit/${id}`)}>Edit</Button>{' '}</td>
-                <td><Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button></td>
+                <td><Button variant="primary" onClick={() => navigator(`/edit/${_id}`)}>Edit</Button>{' '}</td>
+                <td><Button variant="danger" onClick={() => handleRemoveBook(_id)}>Delete</Button></td>
         </tr>
     )
 }
