@@ -19,3 +19,19 @@ MONGODB_URI=mongodb://localhost:27017/your_database_name
 - `your_database_name` is the name of your database.
 
 5. The project will now connect to your local MongoDB.
+
+How To Run The Project
+
+1. Command for running server
+```bash
+cd src
+cd backend
+node server.js
+```
+
+2. Command for running frontend
+```bash
+cd src
+cd frontend
+npm run dev
+```
