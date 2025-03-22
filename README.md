@@ -24,14 +24,12 @@ How To Run The Project
 
 1. Command for running server
 ```bash
-cd src
 cd backend
 node server.js
 ```
 
 2. Command for running frontend
 ```bash
-cd src
 cd frontend
 npm run dev
 ```
