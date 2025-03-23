@@ -4,25 +4,11 @@ import Header from '../components/Header';
 import AddBook from '../components/AddBook';
 import BookList from '../components/BookList';
 import EditBook from '../components/EditBook';
-import { useState, useEffect } from 'react';
 import { Navigate } from "react-router-dom";
-
+import App from "../App";
 
 const AppRouter = () =>{
-    const [books, setBooks] = useState([]);
-    useEffect(() => {
-        fetch("http://localhost:3001/books")
-            .then(response => {
-                if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => setBooks(data))
-            .catch(error => console.error("Error fetching books:", error));
-    }, []);
-    
-      
+        const [books,setBooks] =App();
         return(
             <BrowserRouter>
                 <div>
@@ -37,7 +23,7 @@ const AppRouter = () =>{
                     </div>
                 </div>
             </BrowserRouter>
-        )
+        );
     }
 
 export default AppRouter;

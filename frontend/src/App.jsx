@@ -1,20 +1,21 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import React from 'react';
-import ReactDOM from 'react-dom';
-import AppRouter from './router/AppRouter';
+import { useEffect } from 'react';
 
 function App() {
-  //const [count, setCount] = useState(0)
-
-  return (
-    <>
-	
-
-    </>
-  )
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+      fetch("http://localhost:3001/books")
+          .then(response => {
+              if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then(data => setBooks(data))
+          .catch(error => console.error("Error fetching books:", error));
+  }, []);
+  return [books,setBooks];
 }
 
 export default App;
