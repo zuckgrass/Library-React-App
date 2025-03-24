@@ -5,10 +5,10 @@ import AddBook from '../components/AddBook';
 import BookList from '../components/BookList';
 import EditBook from '../components/EditBook';
 import { Navigate } from "react-router-dom";
-import App from "../App";
+import useBooks from "./useBooks";
 
 const AppRouter = () =>{
-        const [books,setBooks] =App();
+        const [books,setBooks] =useBooks();
         return(
             <BrowserRouter>
                 <div>
