@@ -1,17 +1,20 @@
 import React from 'react';
 import BookForm from './BookForm';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useContextBooks } from "../hooks/BooksContext";
 
-const EditBook =({ books, setBooks}) =>{
+const EditBook =() =>{
     const {_id} = useParams();
-    const [book, setBook] = useState(null);
+    const context =useContextBooks();
+    const {editBook} = context;
     const navigate = useNavigate();
+    const [book, setBook] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:3001/books/${_id}`)
             .then((response) => response.json())
-            .then((data) => setBook(data))
+            .then ((data)=>setBook(data))
             .catch((error) => console.error("Error fetching book:", error));
     }, [_id]);
 
@@ -24,10 +27,8 @@ const EditBook =({ books, setBooks}) =>{
             body: JSON.stringify(updatedBook)
         })
             .then((response) => response.json())
-            .then((data) => {
-                // Update the book in the books state
-                const updatedBooks = books.map((b) => (b._id === _id ? data : b));
-                setBooks(updatedBooks);
+            .then(() => {
+                editBook(_id, updatedBook);
                 navigate('/');
             })
             .catch((error) => console.error("Error updating book:", error));
