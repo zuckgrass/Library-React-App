@@ -33,8 +33,4 @@ export const BooksProvider = ({children}) =>{
     );
 };
 
-export const useContextBooks = () =>{
-    return useContext(BooksContext);
-};
-
 export default BooksContext;

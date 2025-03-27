@@ -2,11 +2,12 @@ import React from 'react';
 import BookForm from './BookForm';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useContextBooks } from "../hooks/BooksContext";
+import  BooksContext from "../hooks/BooksContext";
+import {useContext} from "react";
 
 const EditBook =() =>{
     const {_id} = useParams();
-    const context =useContextBooks();
+    const context =useContext(BooksContext);
     const {editBook} = context;
     const navigate = useNavigate();
     const [book, setBook] = useState(null);

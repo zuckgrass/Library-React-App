@@ -1,10 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
 import Book from './Book';
-import { useContextBooks } from "../hooks/BooksContext";
+import  BooksContext from "../hooks/BooksContext";
+import {useContext} from "react";
 
 const BookList = () =>{
-	const context =useContextBooks();
+	const context =useContext(BooksContext);
 	const { books, deleteBook} = context;
 	const handleRemoveBook = (id) => {
 		fetch(`http://localhost:3001/books/${id}`, {

@@ -1,11 +1,12 @@
 import React from 'react';
 import BookForm from './BookForm';
 import { useNavigate } from "react-router-dom";
-import { useContextBooks } from "../hooks/BooksContext";
+import  BooksContext from "../hooks/BooksContext";
+import {useContext} from "react";
 
 const AddBook = () =>{
     const navigator = useNavigate();
-    const context =useContextBooks();
+    const context =useContext(BooksContext);
     const {addBook} = context;
     const handleOnSubmit = (book) => {
         fetch("http://localhost:3001/books", {
